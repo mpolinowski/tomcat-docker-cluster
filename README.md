@@ -157,3 +157,14 @@ server {
 }
 
 ```
+
+
+I forwarded the Tomcat service on port `8888` so I can now access the sample app under:
+
+
+```bash
+http://<My-Server>:8888/sample/
+```
+
+
+![Tomcat 10 Docker Cluster](./tomcat10-docker-cluster_01.png)
