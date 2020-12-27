@@ -1,0 +1,30 @@
+portal:
+  image: nginx:stable-alpine
+  ports:
+   - "8888:80"
+  volumes:
+   - /opt/tomcat/docker/cluster/nginx/default.conf:/etc/nginx/conf.d/default.conf
+  links:
+   - tomcatOne:tomcat1
+   - tomcatTwo:tomcat2
+   - tomcatThree:tomcat3
+tomcatOne:
+  image: tomcat:10-jdk11-corretto
+  volumes:
+   - /opt/tomcat/docker/cluster/tomcat/conf/server.xml:/usr/local/tomcat/conf/server.xml
+   - /opt/tomcat/docker/cluster/tomcat/conf/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
+   - /opt/tomcat/docker/cluster/tomcat/webapps/sample.war:/usr/local/tomcat/webapps/sample.war
+tomcatTwo:
+  image: tomcat:10-jdk11-corretto
+  volumes:
+   - /opt/tomcat/docker/cluster/tomcat/conf/server.xml:/usr/local/tomcat/conf/server.xml
+   - /opt/tomcat/docker/cluster/tomcat/conf/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
+   - /opt/tomcat/docker/cluster/tomcat/webapps/sample.war:/usr/local/tomcat/webapps/sample.war
+tomcatThree:
+  image: tomcat:10-jdk11-corretto
+  volumes:
+   - /opt/tomcat/docker/cluster/tomcat/conf/server.xml:/usr/local/tomcat/conf/server.xml
+   - /opt/tomcat/docker/cluster/tomcat/conf/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
+   - /opt/tomcat/docker/cluster/tomcat/webapps/sample.war:/usr/local/tomcat/webapps/sample.war
+
+
